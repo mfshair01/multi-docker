@@ -14,4 +14,9 @@ after_success:
   - docker build -t mfshair01/multi-nginx ./nginx
   - docker build -t mfshair01/multi-server ./server
   - docker build -t mfshair01/multi-worker ./worker
-  
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push mfshair01/multi-client
+  - docker push mfshair01/multi-nginx
+  - docker push mfshair01/multi-server
+  - docker push mfshair01/multi-worker
